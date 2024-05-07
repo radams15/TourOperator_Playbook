@@ -1,0 +1,9 @@
+---
+
+- name: Restart touroperator
+  ansible.builtin.service:
+    name: touroperator
+    state: restarted
+    enabled: true
+
+

@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+  roles:
+    - geerlingguy.docker
+    - touroperator
+    
+  tasks:
+    - name: Restart touroperator
+      ansible.builtin.service:
+        name: touroperator
+        state: restarted
+        enabled: true
+

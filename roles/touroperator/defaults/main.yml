@@ -1,0 +1,3 @@
+---
+touroperator_dir: "/app/"
+docker_exe: "/usr/bin/docker"

@@ -1,0 +1,20 @@
+[Unit]
+Description=Tour Operator
+Requires=docker.service
+After=docker.service
+
+[Service]
+User=root
+Group=docker
+TimeoutStopSec=15
+WorkingDirectory={{ touroperator_dir }}
+# Shutdown container (if running) when unit is started
+ExecStartPre={{ docker_exe }} compose down
+# Start container when unit is started
+ExecStart={{ docker_exe }} compose up --pull always
+# Stop container when unit is stopped
+ExecStop={{ docker_exe }} compose down
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

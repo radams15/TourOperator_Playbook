@@ -1,0 +1,19 @@
+---
+- name: Write touroperator service
+  action: template src=templates/touroperator.service dest=/etc/systemd/system/touroperator.service
+  notify:
+    - Restart touroperator
+
+- name: Create directories
+  file:
+    path: "{{ touroperator_dir }}/{{ item }}"
+    state: directory
+    owner: 10001
+    group: 10001
+  loop:
+    - db
+
+- name: Write docker compose file
+  action: template src=templates/docker-compose.yaml dest=/{{ touroperator_dir }}/docker-compose.yaml
+  notify:
+    - Restart touroperator
