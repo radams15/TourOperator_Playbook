@@ -1,3 +1,4 @@
 ---
 touroperator_dir: "/app/"
+touroperator_connstr: ""
 docker_exe: "/usr/bin/docker"

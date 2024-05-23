@@ -2,6 +2,8 @@
 - hosts: all
   become: yes
   become_method: sudo
+  vars:
+    - touroperator_connstr: "Server=db,1433;TrustServerCertificate=Yes;Database=TourDB;UID=sa;PWD=password123!"
   roles:
     - geerlingguy.docker
     - touroperator

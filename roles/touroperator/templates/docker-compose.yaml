@@ -3,8 +3,12 @@ version: "3"
 services:
   touroperator:
     image: quay.io/radams15/touroperator:latest
+    environment:
+        - SQLCONNSTR_DefaultConnection={{ touroperator_connstr }}
     ports:
         - 9876:80
+    depends_on:
+        - db
     restart: unless-stopped
   
   db:
